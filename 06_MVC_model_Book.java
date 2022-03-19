@@ -1,7 +1,12 @@
 package com.kh.practice.list.library.model.vo;
 
-public class Book {
+public class Book implements Comparable <Book> {
     
+	//객체 설계 시 Comparable<Book> 미리 설계
+	//정렬 할수 있는  데이터
+	// category -title
+	
+	
 	//필드부
 	private String title;
 	private String author;
@@ -48,8 +53,7 @@ public class Book {
 	//객체의 정보를 리턴하는 메소드
 	@Override
 	public String toString() {
-		return "Book [title=" + title + ", author=" + author + ", "
-				+ "category=" + category + ", price=" + price + "]";
+		return "( "+ title+ "/" +author+ "/"+category+ "/"+price+ " )" ;
 	}
 	//해시코드를 리턴하는 메소드
 	@Override
@@ -77,7 +81,8 @@ public class Book {
 	public int compareTo(Book o) {
 		//같으면 0, 높으면 1, 낮으면 -1
 		//category / title
-		int result=0;		
+		int result=0;
+		
 		result=this.category.compareTo(o.category);
 		if(result==0) {
 			this.title.compareTo(o.title);
